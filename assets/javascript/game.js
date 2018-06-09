@@ -1,42 +1,94 @@
 var isCharSel = false;
 var isEnemSel = false;
 var charSel = "";
+var enemSel;
 
 //create character objects
 var michael = {
     name: "Michael",
+    id: "mic",
     hp: 120,
+    initap: 8,
+    ap: 8,
+    ca: 7,
 
     select: function () {
-        
+
         isCharSel = true;
-        charSel = "Michael";
+        charSel = this;
         $("#buster").hide();
         $("#gob").hide();
         $("#lindsay").hide();
-        $("#char_head").html("Your Character:");
+        $("#char_head").html("Your Character");
         console.log("you selected michael");
         $("#enemchar").css("visibility", "visible");
-        $("#enem_michael").hide();
+        $("#enem_mic").hide();
+    },
+
+    enem_select: function () {
+        isEnemSel = true;
+        enemSel = this;
+        $("#enem_bus").hide();
+        $("#enem_gob").hide();
+        $("#enem_lin").hide();
+        $("#enem_head").html("Press the button to attack");
+        console.log("you selected michael");
+        $("#button").css("visibility", "visible");
+        $("#win-lose").html("");
+    },
+
+    attack: function () {
+        enemSel.hp -= this.ap;
+        this.ap += this.initap;
+    },
+
+    counter: function () {
+        charSel.hp -= this.ca;
     },
 
 
 };
 
 var gob = {
-    name: "GOB",
+    name: "Gob",
+    id: "gob",
     hp: 100,
+    initap: 15,
+    ap: 15,
+    ca: 10,
 
     select: function () {
-        
+
         isCharSel = true;
+        charSel = this;
         $("#michael").hide();
         $("#buster").hide();
         $("#lindsay").hide();
-        $("#char_head").html("Your Character:");
+        $("#char_head").html("Your Character");
         console.log("you selected gob");
         $("#enemchar").css("visibility", "visible");
         $("#enem_gob").hide();
+    },
+
+    enem_select: function () {
+        isEnemSel = true;
+        enemSel = this;
+        $("#enem_bus").hide();
+        $("#enem_mic").hide();
+        $("#enem_lin").hide();
+        $("#enem_head").html("Press the button to attack");
+        console.log("you selected gob");
+        $("#button").css("visibility", "visible");
+        $("#win-lose").html("");
+    },
+
+    attack: function () {
+        enemSel.hp -= this.ap;
+        this.ap += this.initap;
+    },
+
+    counter: function () {
+        charSel.hp -= this.ca;
     },
 
 
@@ -44,18 +96,44 @@ var gob = {
 
 var lindsay = {
     name: "Lindsay",
+    id: "lin",
+    initap: 10,
     hp: 150,
+    ap: 10,
+    ca: 10,
 
     select: function () {
-        
+
         isCharSel = true;
+        charSel = this;
         $("#michael").hide();
         $("#gob").hide();
         $("#buster").hide();
-        $("#char_head").html("Your Character:");
+        $("#char_head").html("Your Character");
         console.log("you selected lindsay");
         $("#enemchar").css("visibility", "visible");
-        $("#enem_lindsay").hide();
+        $("#enem_lin").hide();
+    },
+
+    enem_select: function () {
+        isEnemSel = true;
+        enemSel = this;
+        $("#enem_bus").hide();
+        $("#enem_gob").hide();
+        $("#enem_mic").hide();
+        $("#enem_head").html("Press the button to attack");
+        console.log("you selected lindsay");
+        $("#button").css("visibility", "visible");
+        $("#win-lose").html("");
+    },
+
+    attack: function () {
+        enemSel.hp -= this.ap;
+        this.ap += this.initap;
+    },
+
+    counter: function () {
+        charSel.hp -= this.ca;
     },
 
 
@@ -63,44 +141,202 @@ var lindsay = {
 
 var buster = {
     name: "Buster",
+    id: "bus",
+    initap: 20,
     hp: 180,
+    ap: 20,
+    ca: 20,
 
     select: function () {
-        
+
         isCharSel = true;
+        charSel = this;
         $("#michael").hide();
         $("#gob").hide();
         $("#lindsay").hide();
-        $("#char_head").html("Your Character:");
+        $("#char_head").html("Your Character");
         console.log("you selected buster");
         $("#enemchar").css("visibility", "visible");
-        $("#enem_buster").hide();
+        $("#enem_bus").hide();
+    },
+
+    enem_select: function () {
+        isEnemSel = true;
+        enemSel = this;
+        $("#enem_mic").hide();
+        $("#enem_gob").hide();
+        $("#enem_lin").hide();
+        $("#enem_head").html("Press the button to attack");
+        console.log("you selected buster");
+        $("#button").css("visibility", "visible");
+        $("#win-lose").html("");
+    },
+
+    attack: function () {
+        enemSel.hp -= this.ap;
+        this.ap += this.initap;
+    },
+
+    counter: function () {
+        charSel.hp -= this.ca;
     },
 
 
 };
 
 //select your character
-$("#micpic").click(function() {
+$("#micpic").click(function () {
     if (isCharSel == false) {
         michael.select();
     }
 });
 
-$("#gobpic").click(function() {
+$("#gobpic").click(function () {
     if (isCharSel == false) {
         gob.select();
     }
 });
 
-$("#linpic").click(function() {
+$("#linpic").click(function () {
     if (isCharSel == false) {
         lindsay.select();
     }
 });
 
-$("#buspic").click(function() {
+$("#buspic").click(function () {
     if (isCharSel == false) {
         buster.select();
     }
 });
+
+//select your enemy
+$("#enem_micpic").click(function () {
+    if (isEnemSel == false) {
+        michael.enem_select();
+    }
+});
+
+$("#enem_gobpic").click(function () {
+    if (isEnemSel == false) {
+        gob.enem_select();
+    }
+});
+
+$("#enem_linpic").click(function () {
+    if (isEnemSel == false) {
+        lindsay.enem_select();
+    }
+});
+
+$("#enem_buspic").click(function () {
+    if (isEnemSel == false) {
+        buster.enem_select();
+    }
+});
+
+//attack
+
+
+$("#attack").click(function () {
+    if (charSel.hp > 0 && enemSel.hp > 0) {
+        $("#attacked").html("You attacked " + enemSel.name + " for " + charSel.ap + " damage.");
+        $("#countered").html(enemSel.name + " attacked you back for " + enemSel.ca + " damage.");
+        charSel.attack();
+        if (enemSel.hp > 0) {
+            enemSel.counter();
+        }
+        console.log(enemSel.hp);
+        console.log(charSel.hp);
+        $("#" + charSel.id + "hp").html("HP: " + charSel.hp);
+        $("#enem" + enemSel.id + "hp").html("HP: " + enemSel.hp);
+
+    }
+
+    if (charHPCheck() != true) {
+        enemHPCheck();
+        winCheck();
+    }
+
+
+});
+
+function charHPCheck() {
+    if (charSel.hp <= 0) {
+        $("#attacked").html("");
+        $("#countered").html("");
+        $("#button").hide();
+        $("#win-lose").html("You have been defeated... GAME OVER! =(");
+        $("#restart").css("visibility", "visible");
+
+        return true;
+    }
+}
+
+function enemHPCheck() {
+    if (enemSel.hp <= 0) {
+        $("#attacked").html("");
+        $("#countered").html("");
+        $("#win-lose").html("You've defeated " + enemSel.name + ". Choose another sibling to fight.");
+        $("#enem_" + enemSel.id).hide();
+        $("#button").css("visibility", "hidden");
+        $("#enem_head").html("Siblings Available To Attack");
+        isEnemSel = false;
+
+        if (buster.name != charSel.name && buster.hp > 0) {
+            $("#enem_bus").show();
+        }
+        if (michael.name != charSel.name && michael.hp > 0) {
+            $("#enem_mic").show();
+        }
+
+        if (gob.name != charSel.name && gob.hp > 0) {
+            $("#enem_gob").show();
+        }
+
+        if (lindsay.name != charSel.name && lindsay.hp > 0) {
+            $("#enem_lin").show();
+        }
+    }
+}
+
+function winCheck() {
+    if (charSel.name == "Michael") {
+        if (buster.hp <= 0 && gob.hp <= 0 && lindsay.hp <=0 ) {
+            $("#win-lose").html("You win... CONGRATS! =)");
+            $("#enem_head").html("");
+            $("#restart").css("visibility", "visible");
+        }
+    }
+
+    if (charSel.name == "Gob") {
+        if (buster.hp <= 0 && michael.hp <= 0 && lindsay.hp <=0 ) {
+            $("#win-lose").html("You win... CONGRATS! =)");
+            $("#enem_head").html("");
+            $("#restart").css("visibility", "visible");
+        }
+    }
+
+    if (charSel.name == "Lindsay") {
+        if (buster.hp <= 0 && gob.hp <= 0 && michael.hp <=0 ) {
+            $("#win-lose").html("You win... CONGRATS! =)");
+            $("#enem_head").html("");
+            $("#restart").css("visibility", "visible");
+        }
+    }
+
+    if (charSel.name == "Buster") {
+        if (michael.hp <= 0 && gob.hp <= 0 && lindsay.hp <=0 ) {
+            $("#win-lose").html("You win... CONGRATS! =)");
+            $("#enem_head").html("");
+            $("#restart").css("visibility", "visible");
+        }
+    }
+}
+
+$("#restart").click(function () {
+    
+    location.reload();
+
+
+});
+

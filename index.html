@@ -12,8 +12,9 @@
 
 <body>
     <h1>Arrested Development RPG</h1>
-    <h2 id="char_head">Click an image to select a Bluth sibling:</h2>
+
     <div id="yourchar">
+        <h2 id="char_head">Click an image to select a Bluth sibling:</h2>
         <div id="michael" class="chardiv">
             <h3>Michael Bluth</h3>
             <img id="micpic" class="charimg" src="assets/images/michael.jpg">
@@ -21,54 +22,73 @@
         </div>
 
         <div id="gob" class="chardiv">
-            <h3>GOB Bluth</h3>
+            <h3>Gob Bluth</h3>
             <img id="gobpic" class="charimg" src="assets/images/gob.jpg">
-            <h4 id="michp">HP: 100</h4>
+            <h4 id="gobhp">HP: 100</h4>
         </div>
 
         <div id="lindsay" class="chardiv">
             <h3>Lindsay Bluth</h3>
             <img id="linpic" class="charimg" src="assets/images/lindsay.jpg">
-            <h4 id="michp">HP: 150</h4>
+            <h4 id="linhp">HP: 150</h4>
         </div>
 
         <div id="buster" class="chardiv">
             <h3>Buster Bluth</h3>
             <img id="buspic" class="charimg" src="assets/images/buster.jpg">
-            <h4 id="michp">HP: 180</h4>
+            <h4 id="bushp">HP: 180</h4>
         </div>
-        
+
     </div>
 
     <div id="enemchar">
-        <h2>Enemies Available To Attack</h2>
-            <div id="enem_michael" class="chardiv">
-                <h3>Michael Bluth</h3>
-                <img id="enem_micpic" class="charimg" src="assets/images/michael.jpg">
-                <h4 id="michp">HP: 120</h4>
-            </div>
-    
-            <div id="enem_gob" class="chardiv">
-                <h3>GOB Bluth</h3>
-                <img id="enem_gobpic" class="charimg" src="assets/images/gob.jpg">
-                <h4 id="michp">HP: 100</h4>
-            </div>
-    
-            <div id="enem_lindsay" class="chardiv">
-                <h3>Lindsay Bluth</h3>
-                <img id="enem_linpic" class="charimg" src="assets/images/lindsay.jpg">
-                <h4 id="michp">HP: 150</h4>
-            </div>
-    
-            <div id="enem_buster" class="chardiv">
-                <h3>Buster Bluth</h3>
-                <img id="enem_buspic" class="charimg" src="assets/images/buster.jpg">
-                <h4 id="michp">HP: 180</h4>
-            </div>
-            
+        <h2 id="enem_head">Siblings Available To Attack</h2>
+        <div id="enem_mic" class="chardiv">
+            <h3>Michael Bluth</h3>
+            <img id="enem_micpic" class="charimg" src="assets/images/michael.jpg">
+            <h4 id="enemmichp">HP: 120</h4>
         </div>
 
-   
+        <div id="enem_gob" class="chardiv">
+            <h3>Gob Bluth</h3>
+            <img id="enem_gobpic" class="charimg" src="assets/images/gob.jpg">
+            <h4 id="enemgobhp">HP: 100</h4>
+        </div>
+
+        <div id="enem_lin" class="chardiv">
+            <h3>Lindsay Bluth</h3>
+            <img id="enem_linpic" class="charimg" src="assets/images/lindsay.jpg">
+            <h4 id="enemlinhp">HP: 150</h4>
+        </div>
+
+        <div id="enem_bus" class="chardiv">
+            <h3>Buster Bluth</h3>
+            <img id="enem_buspic" class="charimg" src="assets/images/buster.jpg">
+            <h4 id="enembushp">HP: 180</h4>
+        </div>
+
+    </div>
+
+    <div id="button">
+        <button id="attack">
+            Attack
+        </button>
+    </div>
+
+
+    <div id="attacked"></div>
+
+    <div id="countered"></div>
+    <div id="win-lose"></div>
+
+    <div id="restart">
+            <button id="reset">
+                Restart
+            </button>
+        </div>
+
+
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script type="text/javascript" src="assets/javascript/game.js"></script>
 </body>

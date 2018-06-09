@@ -17,8 +17,7 @@ body {
 }
 
 #yourchar {
-    margin-bottom: 10px;
-    clear:both;
+
 }
 
 #enemchar {
@@ -28,6 +27,7 @@ body {
 .charimg {
     width: 250px;
     height: auto;
+    cursor: pointer;
 }
 
 h1 {
@@ -47,4 +47,25 @@ h3 {
 h4 {
     margin-top: 2px;
     margin-bottom: 5px;
+}
+
+#button, #restart {
+    clear:both;
+    visibility:hidden;
+    display:block;
+}
+
+#attack {
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+#countered, #attacked, #win-lose {
+    clear: both;
+font-weight: bold;
+}
+
+#attack, #reset {
+    font-weight: bold;
+    margin-top: 15px;
 }
