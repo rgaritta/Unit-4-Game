@@ -235,8 +235,6 @@ $("#enem_buspic").click(function () {
 });
 
 //attack
-
-
 $("#attack").click(function () {
     if (charSel.hp > 0 && enemSel.hp > 0) {
         $("#attacked").html("You attacked " + enemSel.name + " for " + charSel.ap + " damage.");
