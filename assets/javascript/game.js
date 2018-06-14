@@ -2,15 +2,20 @@ var isCharSel = false;
 var isEnemSel = false;
 var charSel = "";
 var enemSel;
+var closing = new Audio('assets/audio/closing.mp3');
+var annyong = new Audio('assets/audio/annyong.mp3');
+
 
 //create character objects
 var michael = {
     name: "Michael",
     id: "mic",
     hp: 120,
-    initap: 8,
-    ap: 8,
-    ca: 7,
+    initap: 15,
+    ap: 15,
+    ca: 15,
+    dadsAlive: new Audio('assets/audio/dadsAlive.mp3'),
+
 
     select: function () {
 
@@ -23,6 +28,8 @@ var michael = {
         console.log("you selected michael");
         $("#enemchar").css("visibility", "visible");
         $("#enem_mic").hide();
+        closing.play();
+        this.dadsAlive.play();
     },
 
     enem_select: function () {
@@ -35,6 +42,7 @@ var michael = {
         console.log("you selected michael");
         $("#button").css("visibility", "visible");
         $("#win-lose").html("");
+        this.dadsAlive.play();
     },
 
     attack: function () {
@@ -55,7 +63,9 @@ var gob = {
     hp: 100,
     initap: 15,
     ap: 15,
-    ca: 10,
+    ca: 20,
+    comeOn: new Audio('assets/audio/comeOn.mp3'),
+
 
     select: function () {
 
@@ -68,6 +78,8 @@ var gob = {
         console.log("you selected gob");
         $("#enemchar").css("visibility", "visible");
         $("#enem_gob").hide();
+        closing.play();
+        this.comeOn.play();
     },
 
     enem_select: function () {
@@ -80,6 +92,7 @@ var gob = {
         console.log("you selected gob");
         $("#button").css("visibility", "visible");
         $("#win-lose").html("");
+        this.comeOn.play();
     },
 
     attack: function () {
@@ -100,7 +113,8 @@ var lindsay = {
     initap: 10,
     hp: 150,
     ap: 10,
-    ca: 10,
+    ca: 12,
+    diamondCreme: new Audio('assets/audio/diamondCreme.mp3'),
 
     select: function () {
 
@@ -113,6 +127,8 @@ var lindsay = {
         console.log("you selected lindsay");
         $("#enemchar").css("visibility", "visible");
         $("#enem_lin").hide();
+        closing.play();
+        this.diamondCreme.play();
     },
 
     enem_select: function () {
@@ -125,6 +141,7 @@ var lindsay = {
         console.log("you selected lindsay");
         $("#button").css("visibility", "visible");
         $("#win-lose").html("");
+        this.diamondCreme.play();
     },
 
     attack: function () {
@@ -142,10 +159,11 @@ var lindsay = {
 var buster = {
     name: "Buster",
     id: "bus",
-    initap: 20,
+    initap: 12,
     hp: 180,
-    ap: 20,
-    ca: 20,
+    ap: 12,
+    ca: 30,
+    heyBrother: new Audio('assets/audio/heyBrother.mp3'),
 
     select: function () {
 
@@ -158,6 +176,8 @@ var buster = {
         console.log("you selected buster");
         $("#enemchar").css("visibility", "visible");
         $("#enem_bus").hide();
+        closing.play();
+        this.heyBrother.play();
     },
 
     enem_select: function () {
@@ -170,6 +190,7 @@ var buster = {
         console.log("you selected buster");
         $("#button").css("visibility", "visible");
         $("#win-lose").html("");
+        this.heyBrother.play();
     },
 
     attack: function () {
@@ -236,6 +257,7 @@ $("#enem_buspic").click(function () {
 
 //attack
 $("#attack").click(function () {
+    annyong.play();
     if (charSel.hp > 0 && enemSel.hp > 0) {
         $("#attacked").html("You attacked " + enemSel.name + " for " + charSel.ap + " damage.");
         $("#countered").html(enemSel.name + " attacked you back for " + enemSel.ca + " damage.");
@@ -299,7 +321,7 @@ function enemHPCheck() {
 
 function winCheck() {
     if (charSel.name == "Michael") {
-        if (buster.hp <= 0 && gob.hp <= 0 && lindsay.hp <=0 ) {
+        if (buster.hp <= 0 && gob.hp <= 0 && lindsay.hp <= 0) {
             $("#win-lose").html("You win... CONGRATS! =)");
             $("#enem_head").html("");
             $("#restart").css("visibility", "visible");
@@ -307,7 +329,7 @@ function winCheck() {
     }
 
     if (charSel.name == "Gob") {
-        if (buster.hp <= 0 && michael.hp <= 0 && lindsay.hp <=0 ) {
+        if (buster.hp <= 0 && michael.hp <= 0 && lindsay.hp <= 0) {
             $("#win-lose").html("You win... CONGRATS! =)");
             $("#enem_head").html("");
             $("#restart").css("visibility", "visible");
@@ -315,7 +337,7 @@ function winCheck() {
     }
 
     if (charSel.name == "Lindsay") {
-        if (buster.hp <= 0 && gob.hp <= 0 && michael.hp <=0 ) {
+        if (buster.hp <= 0 && gob.hp <= 0 && michael.hp <= 0) {
             $("#win-lose").html("You win... CONGRATS! =)");
             $("#enem_head").html("");
             $("#restart").css("visibility", "visible");
@@ -323,7 +345,7 @@ function winCheck() {
     }
 
     if (charSel.name == "Buster") {
-        if (michael.hp <= 0 && gob.hp <= 0 && lindsay.hp <=0 ) {
+        if (michael.hp <= 0 && gob.hp <= 0 && lindsay.hp <= 0) {
             $("#win-lose").html("You win... CONGRATS! =)");
             $("#enem_head").html("");
             $("#restart").css("visibility", "visible");
@@ -332,9 +354,5 @@ function winCheck() {
 }
 
 $("#restart").click(function () {
-    
     location.reload();
-
-
 });
-
